@@ -30,7 +30,7 @@ const crossRegionImportStack = new CrossRegionImportStack(
     },
     crossRegionReferences: true,
     bucket_1_policy: crossRegionExportStack.bucket_1_policy,
-    bucket_2_policy: crossRegionExportStack.bucket_2_policy,
+    // bucket_2_policy: crossRegionExportStack.bucket_2_policy,
   }
 );
 crossRegionImportStack.addDependency(crossRegionExportStack);
