@@ -1,8 +1,8 @@
 ## reproduction repo for https://github.com/aws/aws-cdk/issues/27902
 
 - you need to provide SMW_AWS_ACCOUNT_ID in cross-region-delete.ts
-- first deploy the full stack (see code at commit 38eb987)
-- then comment out the reference to bucket_2_policy in crossRegionImportStack (see code after commit 54503bd) Note: you need to commented out in cross-region-delete.ts and in crossRegionImportStack.ts
+- first deploy the full stack (see code at commit 38eb987), you need to uncomment the bucket_2_policy references in bin/cross-region-delete.ts and in lib/crossRegionImportStack.ts
+- then comment out the reference to bucket_2_policy in crossRegionImportStack (see code after commit 54503bd) Note: you need to comment out in bin/cross-region-delete.ts and in lib/crossRegionImportStack.ts
 - try to deploy the full stack again
 - get error pasted at bottom
 - now your app is stuck in the UPDATE_ROLLBACK_FAILED state
