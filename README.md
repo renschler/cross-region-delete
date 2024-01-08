@@ -1,16 +1,16 @@
-reproduction repo for https://github.com/aws/aws-cdk/issues/27902
+## reproduction repo for https://github.com/aws/aws-cdk/issues/27902
 
-you need to provide SMW_AWS_ACCOUNT_ID in cross-region-delete.ts
+- you need to provide SMW_AWS_ACCOUNT_ID in cross-region-delete.ts
+- first deploy the full stack (see code at commit 38eb987)
+- then comment out the reference to bucket_2_policy in crossRegionImportStack (see code after commit 54503bd) Note: you need to commented out in cross-region-delete.ts and in crossRegionImportStack.ts
+- try to deploy the full stack again
+- get error pasted at bottom
+- now your app is stuck in the UPDATE_ROLLBACK_FAILED state
 
-first deploy the full stack (see code at commit 38eb987)
 
-then comment out the reference to bucket_2_policy in crossRegionImportStack (see code after commit 54503bd)
 
-- needs to be commented out in cross-region-delete.ts and in crossRegionImportStack.ts
 
-try to deploy the full stack again
 
-get this error:
 
 '''
 10:10:05 AM | UPDATE_FAILED | Custom::CrossRegionExportWriter | ExportsWriteruseast2828FA26B86FBEFA7
@@ -74,5 +74,3 @@ The stack named CrossRegionDeleteStack failed to deploy: UPDATE_ROLLBACK_FAILED 
     at async Runtime.handler (/var/task/__entrypoint__.js:1:932) (RequestId: 7328809e-f132-4b40-8c0a-814b4a8b6081)
 
 '''
-
-now your app is stuck in the rollback_update_failed state
