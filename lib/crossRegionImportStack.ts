@@ -5,7 +5,7 @@ import * as iam from "aws-cdk-lib/aws-iam";
 
 interface CrossRegionImportStackProps extends cdk.StackProps {
   bucket_1_policy: iam.PolicyStatement;
-  bucket_2_policy: iam.PolicyStatement;
+  //   bucket_2_policy: iam.PolicyStatement;
 
   env: {
     region: string;
@@ -21,7 +21,11 @@ export class CrossRegionImportStack extends cdk.Stack {
   ) {
     super(scope, id, props);
 
-    const { env, bucket_1_policy, bucket_2_policy } = props;
+    const {
+      env,
+      bucket_1_policy,
+      //bucket_2_policy
+    } = props;
 
     const lambda_1 = new lambda.Function(this, `lambda_1_${env.region}`, {
       runtime: lambda.Runtime.NODEJS_LATEST,
@@ -38,6 +42,6 @@ export class CrossRegionImportStack extends cdk.Stack {
     });
 
     lambda_1.addToRolePolicy(bucket_1_policy);
-    lambda_1.addToRolePolicy(bucket_2_policy);
+    // lambda_1.addToRolePolicy(bucket_2_policy);
   }
 }

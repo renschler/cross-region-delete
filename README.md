@@ -1,14 +1,13 @@
-# Welcome to your CDK TypeScript project
+reproduction repo for https://github.com/aws/aws-cdk/issues/27902
 
-This is a blank project for CDK development with TypeScript.
+you need to provide SMW_AWS_ACCOUNT_ID in cross-region-delete.ts
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+first deploy the full stack (see first commit)
 
-## Useful commands
+then comment out the reference to bucket_2_policy in crossRegionImportStack (see third commit)
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `npx cdk deploy`  deploy this stack to your default AWS account/region
-* `npx cdk diff`    compare deployed stack with current state
-* `npx cdk synth`   emits the synthesized CloudFormation template
+try to deploy the full stack again
+
+get this error:
+
+now your app is stuck in the rollback_update_failed state
